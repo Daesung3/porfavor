@@ -22,7 +22,7 @@
 		if (userID != null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('이미 로그인이 되어있습니.')"); // 비밀번호 틀리다고알람!
+			script.println("alert('이미 로그인이 되어있습니다.')"); // 비밀번호 틀리다고알람!
 			script.println("location.href = 'main.jsp'"); // 이전 페이지로 사용자를 돌려보냄 
 			script.println("</script>");
 		}

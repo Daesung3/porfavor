@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,12 +12,6 @@
 <title>그때 그 시절..</title>
 </head>
 <body>
-	<%
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
-		}
-	%>
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -36,21 +31,15 @@
 				<li><a href="profilelist.jsp">프로필</a></li>
 				<li><a href="bbs.jsp">방명록</a></li>
 			</ul>
-			<%
-				if (userID == null) {
-			%>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">LOGIN<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="Login.jsp">LogIn</a></li>
-						<li><a href="join.jsp">SignIn</a></li>
+						<li><a href="login.jsp">LogIn</a></li>
+						<li><a href="signIn.jsp">SignIn</a></li>
 					</ul></li>
 			</ul>
-			<%
-				} else {
-			%>
 					<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -63,12 +52,9 @@
 						<li><a href="logoutAction.jsp">Logout</a></li>
 					</ul></li>
 			</ul>
-			<%
-				}
-			%>
 		</div>
 	</nav>
-	<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<!-- 애니메이션을 위한 부트스트랩 -->
 </body>

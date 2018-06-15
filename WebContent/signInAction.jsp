@@ -13,7 +13,7 @@
 <jsp:setProperty name="user" property="userPhone" />
 <jsp:setProperty name="user" property="userSchoolSerialNumber" />
 <jsp:setProperty name="user" property="userSchoolNumber" />
-<jsp:setProperty name="user" property="graduateYear" />
+<jsp:setProperty name="user" property="Year" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,14 +30,14 @@
 		if (userID != null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('이미 로그인이 되어있습니.')"); // 비밀번호 틀리다고알람!
+			script.println("alert('이미 로그인이 되어있습니다.')"); // 비밀번호 틀리다고알람!
 			script.println("location.href = 'main.jsp'"); // 이전 페이지로 사용자를 돌려보냄 
 			script.println("</script>");
 		}
 		if (user.getUserID() == null || user.getUserPassword() == null || user.getUserName() == null
 				|| user.getUserEmail() == null || user.getUserPhone() == null
 				|| user.getUserSchoolSerialNumber() == null || user.getUserSchoolNumber() == null
-				|| user.getGraduateYear() == null) {
+				|| user.getYear() == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안된 사항이 있습니다.')");
@@ -51,7 +51,7 @@
 				script.println("<script>");
 				script.println("alert('이미 존재하는 아이디입니다.')");
 				script.println("history.back()");
-				script.println("</script>");
+				script.println("</script>"); 
 			} else {
 				session.setAttribute("userID", user.getUserID());
 				PrintWriter script = response.getWriter();

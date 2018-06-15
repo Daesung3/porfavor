@@ -31,13 +31,15 @@
 				<li><a href="bbs.jsp">방명록</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">접속하기<span class="caret"></span></a>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">접속하기<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li class="active"><a href="Login.jsp">로그인</a></li>
-						<li><a href="join.jsp">회원가입</a></li>
-					</ul></li>
+						<li><a href="signIn.jsp">회원가입</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -77,7 +79,7 @@
 
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<!-- 애니메이션을 위한 부트스트랩 -->
 </body>

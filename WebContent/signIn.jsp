@@ -38,8 +38,6 @@
 					<ul class="dropdown-menu">
 						<li class="active"><a href="login.jsp">로그인</a></li>
 						<li><a href="login.jsp">회원가입</a></li>
-						<li><a href="login.jsp">로그인</a></li>
-						<li><a href="login.jsp">로그인</a></li>
 					</ul>
 					</li>
 			</ul>
@@ -76,7 +74,7 @@
 						<input type="text" class="form-control" placeholder="3학년 학번 ex)30805" name="userSchoolNumber" maxlength="50">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="졸업 연도" name="graduateYear" maxlength="50">
+						<input type="text" class="form-control" placeholder="졸업 연도" name="Year" maxlength="50">
 					</div>
 					<input type="submit" class="btn btn-primary form-control" value="회원가입">			
 				</form>
@@ -84,7 +82,7 @@
 			
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<!-- 애니메이션을 위한 부트스트랩 -->
 </body>

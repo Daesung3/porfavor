@@ -13,7 +13,7 @@ public class UserDAO {
 
 	public UserDAO() {
 		try {
-			String dbURL = "jdbc:mysql://localhost:3306/BBS";
+			String dbURL = "jdbc:mysql://localhost:3306/AAA";
 			String dbID = "root";
 			String dbPassword = "root12345";
 			Class.forName("com.mysql.jdbc.Driver");
@@ -53,7 +53,7 @@ public class UserDAO {
 			pstmt.setString(6, user.getUserPhone());
 			pstmt.setString(5, user.getUserSchoolSerialNumber());
 			pstmt.setString(7, user.getUserSchoolNumber());
-			pstmt.setString(8, user.getGraduateYear());
+			pstmt.setString(8, user.getYear());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

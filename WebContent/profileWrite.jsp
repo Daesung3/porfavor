@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@ page import="bbs.BbsDAO"%>
-<%@ page import="bbs.Bbs"%>
+<%@ page import="profile.ProfileDAO"%>
+<%@ page import="profile.Profile"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -46,8 +46,8 @@
 				<li><a href="main.jsp">메인</a></li>
 				<li><a href="personalphoto.jsp">개인 사진</a></li>
 				<li><a href="groupphoto.jsp">단체 사진</a></li>
-				<li><a href="profilelist.jsp">프로필</a></li>
-				<li class="active"><a href="bbs.jsp">방명록</a></li>
+				<li  class="active"><a href="profilelist.jsp">프로필</a></li>
+				<li><a href="bbs.jsp">방명록</a></li>
 			</ul>
 			<%
 				if (userID == null) {
@@ -72,7 +72,7 @@
 						<li><a href="personalphoto.jsp">개인 사진</a></li>
 						<li><a href="groupphoto.jsp">단체 사진</a></li>
 						<li><a href="profilelist.jsp">프로필</a></li>
-						<li><a href="BSS.jsp">방명록</a></li>
+						<li><a href="bbs.jsp">방명록</a></li>
 						<li><a href="logoutAction.jsp">Logout</a></li>
 					</ul></li>
 			</ul>
@@ -83,46 +83,28 @@
 	</nav>
 	<div class="container">
 		<div class="row">
+		<form method="post" action="profileWriteAction.jsp">
 			<table class="table table=striped"
 				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+						<th style="background-color: #eeeeee; text-align: center;">직업</th>
+						<th style="background-color: #eeeeee; text-align: center;">연락처</th>
+						<th style="background-color: #eeeeee; text-align: center;">SNS</th>
+						<th style="background-color: #eeeeee; text-align: center;">한마디</th>
 					</tr>
 				</thead>
 				<tbody>
-				<%
-					BbsDAO bbsDAO = new BbsDAO();
-					ArrayList<Bbs> list = bbsDAO.getList(pageNumber);
-					for(int i = 0; i < list.size(); i++) {
-				%>
 					<tr>
-						<td><%= list.get(i).getBbsID() %></td>
-						<td><a href=view.jsp?bbsID=<%= list.get(i).getBbsID()%>><%= list.get(i).getBbsTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&lt;").replaceAll("\n", "<br>") %></a></td>
-						<td><%= list.get(i).getUserID() %></td>
-						<td><%= list.get(i).getBbsDate().substring(0, 11) +  list.get(i).getBbsDate().substring(11, 13) + " 시 " + list.get(i).getBbsDate().substring(14, 16)+ " 분 " %></td>
+						<td><input type="text" class="form-control" placeholder="직업" name="job" maxlength="20"></td>
+						<td><input type="text" class="form-control" placeholder="연락처" name="userPhone" maxlength="20"></td>
+						<td><input type="text" class="form-control" placeholder="SNS" name="sns" maxlength="30"></td>
+						<td><input type="text" class="form-control" placeholder="나의 한마디" name="contents" maxlength="50"></td>
 					</tr>				
-				<%
-					}
-				%>
 				</tbody>
 			</table>
-			<%
-				if(pageNumber != 1){
-			%>
-				<a href="bbs.jsp?pageNumber=<%=pageNumber -1%>" class="btn btn-success btn-arraw-left">이전</a>
-			<%
-					
-				}if(bbsDAO.nextPage(pageNumber+1)){
-			%>
-				<a href="bbs.jsp?pageNumber=<%=pageNumber +1%>" class="btn btn-success btn-arraw-left">다음</a>
-			<% 					
-				}
-			%>
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<input type="submit" href="write.jsp" class="btn btn-primary pull-right" value="프로필 쓰기">
+		</form>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

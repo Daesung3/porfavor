@@ -8,14 +8,9 @@ public class User {
 	private String userSchoolSerialNumber;
 	private String userPhone;
 	private String userSchoolNumber;
-	private String graduateYear;
+	private String Year;
 	
-	public String getGraduateYear() {
-		return graduateYear;
-	}
-	public void setGraduateYear(String graduateYear) {
-		this.graduateYear = graduateYear;
-	}
+	
 	public String getUserID() {
 		return userID;
 	}
@@ -58,7 +53,13 @@ public class User {
 	public void setUserSchoolNumber(String userSchoolNumber) {
 		this.userSchoolNumber = userSchoolNumber;
 	}
-
+	public String getYear() {
+		return Year;
+	}
+	public void setYear(String year) {
+		Year = year;
+	}
 	
+
 	
 }
