@@ -28,7 +28,7 @@
 				<li><a href="personalphoto.jsp">개인 사진</a></li>
 				<li><a href="groupphoto.jsp">단체 사진</a></li>
 				<li><a href="profilelist.jsp">프로필</a></li>
-				<li><a href="BSS.jsp">방명록</a></li>
+				<li><a href="bbs.jsp">방명록</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">

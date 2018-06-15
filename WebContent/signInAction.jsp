@@ -23,6 +23,17 @@
 </head>
 <body>
 	<%
+		String userID = null;
+		if (session.getAttribute("userID") != null) {
+			userID = (String) session.getAttribute("userID");
+		}
+		if (userID != null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('이미 로그인이 되어있습니.')"); // 비밀번호 틀리다고알람!
+			script.println("location.href = 'main.jsp'"); // 이전 페이지로 사용자를 돌려보냄 
+			script.println("</script>");
+		}
 		if (user.getUserID() == null || user.getUserPassword() == null || user.getUserName() == null
 				|| user.getUserEmail() == null || user.getUserPhone() == null
 				|| user.getUserSchoolSerialNumber() == null || user.getUserSchoolNumber() == null
@@ -30,7 +41,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안된 사항이 있습니다.')");
-			script.println("history.back()");  
+			script.println("history.back()");
 			script.println("</script>");
 		} else {
 			UserDAO userDAO = new UserDAO();
@@ -38,13 +49,14 @@
 			if (result == -1) {
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("alert('이미 존재하는 아이디입니다.')"); 
-				script.println("history.back()"); 
+				script.println("alert('이미 존재하는 아이디입니다.')");
+				script.println("history.back()");
 				script.println("</script>");
 			} else {
+				session.setAttribute("userID", user.getUserID());
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("location.href ='main.jsp'"); 
+				script.println("location.href ='main.jsp'");
 				script.println("</script>");
 			}
 
