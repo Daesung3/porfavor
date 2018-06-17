@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="profile.Profile"%>
 <%@ page import="profile.ProfileDAO"%>
+<%@ page import="user.User" %>    
+<%@ page import="user.UserDAO" %>
 <%@ page import="java.io.PrintWriter"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -11,6 +13,7 @@
 <jsp:setProperty name="profile" property="userPhone" />
 <jsp:setProperty name="profile" property="sns" />
 <jsp:setProperty name="profile" property="contents" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +23,22 @@
 </head>
 <body>
 	<%
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
-		}
+	String userID = null;
+	String userSchoolSerialNumber = null;
+	String Year = null;
+	String userName = null;
+	String userSchoolNumber = null;
+	int pageNumber = 1;
+	if (session.getAttribute("userID") != null){
+		userID = (String) session.getAttribute("userID");
+		User user = new UserDAO().getUser(userID);
+		userName = user.getUserName();
+		userSchoolSerialNumber = user.getUserSchoolSerialNumber();
+		Year = user.getYear();
+		userSchoolNumber = user.getUserSchoolNumber();
+		
+	}
+		
 		if (userID == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -40,7 +55,7 @@
 				script.println("</script>");
 			} else {
 				ProfileDAO profileDAO = new ProfileDAO();
-				int result = profileDAO.write(userID, profile.getJob(), profile.getUserPhone(), profile.getSns(), profile.getContents());
+				int result = profileDAO.write(userID, profile.getJob(), profile.getUserPhone(), profile.getSns(), profile.getContents(),userSchoolSerialNumber, Year, userName);
 				if (result == -1) {
 					PrintWriter script = response.getWriter();
 					script.println("<script>");

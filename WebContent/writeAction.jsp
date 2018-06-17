@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="bbs.BbsDAO"%>
 <%@ page import="java.io.PrintWriter"%>
+<%@ page import="user.User" %>    
+<%@ page import="user.UserDAO" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -18,10 +20,21 @@
 </head>
 <body>
 	<%
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
-		}
+	String userID = null;
+	String userSchoolSerialNumber = null;
+	String Year = null;
+	String userName = null;
+	String userSchoolNumber = null;
+	int pageNumber = 1;
+	if (session.getAttribute("userID") != null){
+		userID = (String) session.getAttribute("userID");
+		User user = new UserDAO().getUser(userID);
+		userName = user.getUserName();
+		userSchoolSerialNumber = user.getUserSchoolSerialNumber();
+		Year = user.getYear();
+		userSchoolNumber = user.getUserSchoolNumber();
+		
+	}
 		if (userID == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -38,7 +51,7 @@
 			} else {
 				BbsDAO bbsDAO = new BbsDAO();
 				System.out.println(userID);
-				int result = bbsDAO.write(bbs.getBbsTitle(), userID, bbs.getBbsContent());
+				int result = bbsDAO.write(bbs.getBbsTitle(), userID, bbs.getBbsContent(),userSchoolSerialNumber,Year);
 				if (result == -1) {
 					PrintWriter script = response.getWriter();
 					script.println("<script>");

@@ -36,7 +36,8 @@
 		}
 		if (user.getUserID() == null || user.getUserPassword() == null || user.getUserName() == null
 				|| user.getUserEmail() == null || user.getUserPhone() == null
-				|| user.getUserSchoolSerialNumber() == null || user.getUserSchoolNumber() == null) {
+				|| user.getUserSchoolSerialNumber() == null || user.getUserSchoolNumber() == null
+				) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안된 사항이 있습니다.')");
@@ -48,9 +49,9 @@
 			if (result == -1) {
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("alert('아직 지원하지 않는 학교입니다.')");
+				script.println("alert('이미 존재하는 아이디입니다.')");
 				script.println("history.back()");
-				script.println("</script>");
+				script.println("</script>"); 
 			} else {
 				session.setAttribute("userID", user.getUserID());
 				PrintWriter script = response.getWriter();

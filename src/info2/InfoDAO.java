@@ -26,11 +26,12 @@ public class InfoDAO {
 		}
 	}
 	
-	public ArrayList<Info> getList(){
-		String SQL = "SELECT * from info WHERE UserSchoolSerialNumber = 'J100005416' AND Year = '2014'";
+	public ArrayList<Info> getList(String userID){
+		String SQL = "select * from info,user where userID = ? AND user.userSchoolSerialNumber = info.userSchoolSerialNumber AND user.Year = info.Year";
 		ArrayList<Info> list = new ArrayList<Info>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Info info = new Info();

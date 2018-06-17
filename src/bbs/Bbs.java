@@ -7,14 +7,14 @@ public class Bbs {
 	private String bbsDate;
 	private String bbsContent;
 	private int bbsAvailable;
-	private String graduateYear;
 	private String userSchoolSerialNumber;
+	private String Year;
 	
-	public String getGraduateYear() {
-		return graduateYear;
+	public String getYear() {
+		return Year;
 	}
-	public void setGraduateYear(String graduateYear) {
-		this.graduateYear = graduateYear;
+	public void setYear(String year) {
+		Year = year;
 	}
 	public String getUserSchoolSerialNumber() {
 		return userSchoolSerialNumber;

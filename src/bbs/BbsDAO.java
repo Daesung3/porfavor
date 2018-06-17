@@ -50,8 +50,8 @@ public class BbsDAO {
 		}
 		return -1; //데이터베이스 오류
 	}
-	public int write(String bbsTitle, String userID, String bbsContent) {
-		String SQL= "INSERT INTO BBS VALUES (?, ?, ?, ?, ?, ?)";
+	public int write(String bbsTitle, String userID, String bbsContent, String userSchoolSerialNumber, String Year) {
+		String SQL= "INSERT INTO BBS VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
@@ -60,18 +60,22 @@ public class BbsDAO {
 			pstmt.setString(4, getDate());
 			pstmt.setString(5, bbsContent);
 			pstmt.setInt(6, 1);
+			pstmt.setString(7, userSchoolSerialNumber);
+			pstmt.setString(8, Year);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return -1; //데이터베이스 오류
 	}
-	public ArrayList<Bbs> getList(int pageNumber){
-		String SQL= "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10" ; 
+	public ArrayList<Bbs> getList(int pageNumber, String userSchoolSerialNumber, String Year){
+		String SQL= "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 AND ? = bbs.userSchoolSerialNumber AND ? = bbs.Year ORDER BY bbsID DESC LIMIT 10 " ; 
 		ArrayList<Bbs> list = new ArrayList<Bbs>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			pstmt.setString(2, userSchoolSerialNumber);
+			pstmt.setString(3, Year);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Bbs bbs = new Bbs();

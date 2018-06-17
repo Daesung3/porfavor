@@ -10,6 +10,28 @@ public class Profile {
 	private String sns;
 	private String contents;
 	private int profileAvailable;
+	private String userSchoolSerialNumber;
+	private String Year;
+	private String userName;
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserSchoolSerialNumber() {
+		return userSchoolSerialNumber;
+	}
+	public void setUserSchoolSerialNumber(String userSchoolSerialNumber) {
+		this.userSchoolSerialNumber = userSchoolSerialNumber;
+	}
+	public String getYear() {
+		return Year;
+	}
+	public void setYear(String year) {
+		Year = year;
+	}
 	public int getProfileID() {
 		return profileID;
 	}

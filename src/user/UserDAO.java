@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import bbs.Bbs;
+import info2.Info;
 
 public class UserDAO {
 
@@ -59,5 +63,55 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return -1; //데이터 베이스 오류
+	}
+	
+	public ArrayList<User> getList(String userID){
+		String SQL = "SELECT * from user WHERE userID = ?'";
+		ArrayList<User> list = new ArrayList<User>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				User user = new User();
+				user.setUserID(rs.getString(1));
+				user.setUserPassword(rs.getString(2));
+				user.setUserName(rs.getString(3));
+				user.setUserEmail(rs.getString(4));
+				user.setUserSchoolSerialNumber(rs.getString(5));
+				user.setUserPhone(rs.getString(6));
+				user.setUserSchoolNumber(rs.getString(7));
+				user.setYear(rs.getString(8));
+				list.add(user);
+			}
+			
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return list; 
+	}
+	
+	public User getUser(String userID) {
+		String SQL= "SELECT * FROM USER WHERE userID = ?" ; 
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				User user = new User();
+				user.setUserID(rs.getString(1));
+				user.setUserPassword(rs.getString(2));
+				user.setUserName(rs.getString(3));
+				user.setUserEmail(rs.getString(4));
+				user.setUserSchoolSerialNumber(rs.getString(5));
+				user.setUserPhone(rs.getString(6));
+				user.setUserSchoolNumber(rs.getString(7));
+				user.setYear(rs.getString(8));
+				return user;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;  
 	}
 }

@@ -53,11 +53,11 @@ public class ProfileDAO {
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		return -1; 
+		return 1; 
 	}
 	
-	public int write(String userID, String job, String userPhone, String sns, String contents) {
-		String SQL = "INSERT INTO profile VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	public int write(String userID, String job, String userPhone, String sns, String contents, String userSchoolSerialNumber, String Year, String userName) {
+		String SQL = "INSERT INTO profile VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
@@ -68,6 +68,9 @@ public class ProfileDAO {
 			pstmt.setString(6, sns);
 			pstmt.setString(7, contents);
 			pstmt.setInt(8, 1);
+			pstmt.setString(9, userSchoolSerialNumber);
+			pstmt.setString(10, Year);
+			pstmt.setString(11, userName);
 			return pstmt.executeUpdate();
 		}catch (Exception e){
 			e.printStackTrace();
@@ -75,12 +78,14 @@ public class ProfileDAO {
 		return -1; 
 	}
 	
-	public ArrayList<Profile> getList(int pageNumber){
-		String SQL = "SELECT * FROM profile WHERE profileID < ? AND profileAvailable = 1 ORDER BY profileID DESC LIMIT 10";
+	public ArrayList<Profile> getList(int pageNumber, String userSchoolSerialNumber, String Year){
+		String SQL= "SELECT * FROM profile WHERE profileID < ? AND profileAvailable = 1 AND ? = profile.userSchoolSerialNumber AND ? = profile.Year ORDER BY profileID DESC LIMIT 10 " ;
 		ArrayList<Profile> list = new ArrayList<Profile>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			pstmt.setString(2, userSchoolSerialNumber);
+			pstmt.setString(3, Year);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Profile profile = new Profile();
@@ -92,6 +97,7 @@ public class ProfileDAO {
 				profile.setSns(rs.getString(6));
 				profile.setContents(rs.getString(7));
 				profile.setProfileAvailable(rs.getInt(8));
+				profile.setUserName(rs.getString(11));
 				list.add(profile);
 			}
 			

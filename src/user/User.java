@@ -8,8 +8,7 @@ public class User {
 	private String userSchoolSerialNumber;
 	private String userPhone;
 	private String userSchoolNumber;
-	private String Year;
-	
+	private String year;
 	
 	public String getUserID() {
 		return userID;
@@ -54,12 +53,12 @@ public class User {
 		this.userSchoolNumber = userSchoolNumber;
 	}
 	public String getYear() {
-		return Year;
+		return year;
 	}
 	public void setYear(String year) {
-		Year = year;
+		this.year = year;
 	}
-	
+
 
 	
 }

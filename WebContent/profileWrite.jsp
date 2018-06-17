@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <!--반응형을 위한 메타 태그-->
-<title>그때 그 시절..</title>
+<title>Graduate Album</title>
 <style type="text/css">
 	a, a:hover {
 		<!--color: #000000;-->
@@ -90,7 +90,7 @@
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">직업</th>
 						<th style="background-color: #eeeeee; text-align: center;">연락처</th>
-						<th style="background-color: #eeeeee; text-align: center;">SNS</th>
+						<th style="background-color: #eeeeee; text-align: center;">FacebookID</th>
 						<th style="background-color: #eeeeee; text-align: center;">한마디</th>
 					</tr>
 				</thead>
@@ -98,7 +98,7 @@
 					<tr>
 						<td><input type="text" class="form-control" placeholder="직업" name="job" maxlength="20"></td>
 						<td><input type="text" class="form-control" placeholder="연락처" name="userPhone" maxlength="20"></td>
-						<td><input type="text" class="form-control" placeholder="SNS" name="sns" maxlength="30"></td>
+						<td><input type="text" class="form-control" placeholder="FacebookID" name="sns" maxlength="30"></td>
 						<td><input type="text" class="form-control" placeholder="나의 한마디" name="contents" maxlength="50"></td>
 					</tr>				
 				</tbody>
