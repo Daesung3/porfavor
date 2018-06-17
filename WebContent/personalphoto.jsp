@@ -86,7 +86,7 @@
 	<script src="js/bootstrap.js"></script>
 	<!-- 애니메이션을 위한 부트스트랩 -->
 	<br>
-	<table class="table table=striped"
+	<%--  <table class="table table=striped"
 		style="text-align: center; border: 1px solid #dddddd">
 		<thead>
 		</thead>
@@ -110,7 +110,59 @@
 	<br>
 	<div align='left'>
 		<button type="button" class="btn btn-success">다음</button>
-	</div>
+	</div> 
+	 <%
 
+	InfoDAO InfoDAO = new InfoDAO();
+	ArrayList<Info> list = InfoDAO.getList(userID);
+   for (int i=0;i<list.size();i++){
+      for(int j=0;j<5;j++){
+         %>   
+         <div><img src="<%= list.get(j).getPersonalPhoto() %>" class="img-rounded" style="height:200px; width:150px;"></div>
+      <%
+      }
+%>
+      <br>
+<% 
+      for(int k=0;k<5;k++){
+         %>
+         <div><%= list.get(k).getUserName()%></div>
+      <%
+      }
+%>
+   <br>
+   <br>
+<%
+   }
+%>
+ --%>
+<%
+InfoDAO InfoDAO = new InfoDAO();
+ArrayList<Info> list = InfoDAO.getList(userID);
+   for (int i=0;i<list.size();i=i*5+1){
+      for(int j=i;j<i+5;j++){
+         %>   
+         <div><img src="<%= list.get(j).getPersonalPhoto() %>" class="img-rounded" style="height:200px; width:150px;"></div>
+      <%
+      }
+      %>
+      <br>
+      <%
+      for(int k=i;k<i+5;k++){
+         %>   
+         <div><%= list.get(k).getUserName()%></div>
+      <%
+      }
+      %>
+      <br>
+      <br>
+   <%
+   }
+%>
 </body>
 </html>
+<style>
+   div{
+      display:inline;
+   }
+</style>
