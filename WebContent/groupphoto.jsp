@@ -47,9 +47,9 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">MAIN</a></li>
-				<li class="active"><a href="personalphoto.jsp">PERSONAL
+				<li><a href="personalphoto.jsp">PERSONAL
 						PHOTO</a></li>
-				<li><a href="groupphoto.jsp">GROUP PHOTO</a></li>
+				<li class="active"><a href="groupphoto.jsp">GROUP PHOTO</a></li>
 				<li><a href="profilelist.jsp">PROFILE</a></li>
 				<li><a href="bbs.jsp">GUEST BOOK</a></li>
 			</ul>
@@ -85,32 +85,9 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<!-- 애니메이션을 위한 부트스트랩 -->
-	<br>
-	<table class="table table=striped"
-		style="text-align: center; border: 1px solid #dddddd">
-		<thead>
-		</thead>
-		<tbody>
-			<%
-				InfoDAO InfoDAO = new InfoDAO();
-				ArrayList<Info> list = InfoDAO.getList(userID);
-				for (int i = 0; i < list.size(); i++) {
-			%>
-		<tr>
-						<td><img src="<%= list.get(i).getPersonalPhoto() %>" class="img-rounded" style="height:200px; width:150px;"></td>
-						<tr></tr>
-						<td><%= list.get(i).getUserName()%></td>
-					</tr>				
-				<%
-					}
-				%>
-				</tbody>
-			</table>
-	<br>
-	<br>
-	<div align='left'>
-		<button type="button" class="btn btn-success">다음</button>
-	</div>
-
+	
+		   <img src='picture/50.jpg' style="width: 500px; height: 500px; margin-left:100px;" >
+ 			<img src='picture/51.jpg' style="width: 500px; height: 500px; margin-left:50px;">
+		
 </body>
 </html>

@@ -63,7 +63,6 @@
 			</ul>
 			<%
 				} else {
-					
 			%>
 						<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -80,7 +79,7 @@
 			%>
 		</div>
 	</nav>
-	
+	<iframe align="center" width="640" height="360" src="https://www.youtube.com/embed/w6108PkCwTo?list=PLCCqgdIM-F6UayxV3i4XufcOi7I8_l9KL" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>

@@ -14,16 +14,15 @@
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <!--반응형을 위한 메타 태그-->
-<title>그때 그 시절..</title>
+<title>Graduate Album</title>
 </head>
 <body>
-<%
+	<%
 		String userID = null;
 		String userSchoolSerialNumber = null;
 		String Year = null;
 		String userName = null;
 		String userSchoolNumber = null;
-		int pageNumber = 1;
 		if (session.getAttribute("userID") != null){
 			userID = (String) session.getAttribute("userID");
 			User user = new UserDAO().getUser(userID);
@@ -47,11 +46,11 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp">MAIN</a></li>
+				<li class="active"><a href="main.jsp">MAIN</a></li>
 				<li><a href="personalphoto.jsp">PERSONAL PHOTO</a></li>
 				<li><a href="groupphoto.jsp">GROUP PHOTO</a></li>
 				<li><a href="profilelist.jsp">PROFILE</a></li>
-				<li class="active"><a href="bbs.jsp">GUEST BOOK</a></li>
+				<li><a href="bbs.jsp">GUEST BOOK</a></li>
 			</ul>
 			<%
 				if(userID == null) {
@@ -69,7 +68,6 @@
 			</ul>
 			<%
 				} else {
-					
 			%>
 						<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -114,7 +112,7 @@
 			</form>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<!-- 애니메이션을 위한 부트스트랩 -->
 </body>

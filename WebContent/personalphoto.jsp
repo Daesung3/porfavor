@@ -136,33 +136,38 @@
    }
 %>
  --%>
-<%
-InfoDAO InfoDAO = new InfoDAO();
-ArrayList<Info> list = InfoDAO.getList(userID);
-   for (int i=0;i<list.size();i=i*5+1){
-      for(int j=i;j<i+5;j++){
-         %>   
-         <div><img src="<%= list.get(j).getPersonalPhoto() %>" class="img-rounded" style="height:200px; width:150px;"></div>
-      <%
-      }
-      %>
-      <br>
-      <%
-      for(int k=i;k<i+5;k++){
-         %>   
-         <div><%= list.get(k).getUserName()%></div>
-      <%
-      }
-      %>
-      <br>
-      <br>
-   <%
-   }
+	<%
+		InfoDAO InfoDAO = new InfoDAO();
+		ArrayList<Info> list = InfoDAO.getList(userID);
+		for(int i = 0; i < list.size(); i++) {
+		%>
+		<div class='space1'><img src="<%= list.get(i).getPersonalPhoto() %>" class="img-rounded" style="height:200px; width:150px;"></div>
+			
+		<div class='space2'><span><%= list.get(i).getUserName()%></span></div>
+						
+	<%
+		}
 %>
 </body>
 </html>
-<style>
-   div{
-      display:inline;
-   }
+<style type="text/css">
+span{
+	font-size:25px;
+}
+
+x{
+	display:block;
+}
+a, a:hover {<!--
+	color: #000000; -->
+	text-decoration: none;
+}
+.space1{
+	display:inline;
+	margin: 30px;
+}
+.space2{
+	display:inline;
+	margin: 10px;
+}
 </style>
